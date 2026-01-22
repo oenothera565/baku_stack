@@ -20,7 +20,7 @@ export default function LoginPage() {
           System Login
         </h1>
         <p className="text-lg font-mono mt-6 text-gray-600 dark:text-gray-400">
-          // Authenticate to access your cadet portal
+          {"// Authenticate to access your cadet portal"}
         </p>
       </section>
 
@@ -72,7 +72,7 @@ export default function LoginPage() {
               href="/courses"
               className="font-mono text-sm hover:underline"
             >
-              // Create Account
+              {"// Create Account"}
             </Link>
           </div>
         </div>

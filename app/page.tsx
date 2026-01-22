@@ -12,7 +12,7 @@ export default function Home() {
           Baku Stack
         </h1>
         <p className="text-xl md:text-2xl font-mono mt-8 tracking-widest text-gray-600 dark:text-gray-400">
-          // Master Coding. Build Future.
+          {"// Master Coding. Build Future."}
         </p>
       </section>
 
@@ -61,7 +61,7 @@ export default function Home() {
         {/* Кнопка в стиле консоли */}
         <button className="rounded-none border-2 border-black dark:border-white bg-transparent text-black dark:text-white px-16 py-6 text-2xl font-mono font-bold uppercase tracking-wide hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors flex items-center gap-4">
           <span className="text-green-500">$</span>
-          <span>git commit -m "Start Career"</span>
+          <span>git commit -m &quot;Start Career&quot;</span>
         </button>
       </section>
 

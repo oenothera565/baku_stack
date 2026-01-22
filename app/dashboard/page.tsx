@@ -30,7 +30,7 @@ export default function DashboardPage() {
           </h2>
 
           <div className="space-y-0">
-            {ENROLLED_COURSES.map((course, index) => (
+            {ENROLLED_COURSES.map((course) => (
               <Link
                 key={course.id}
                 href={`/courses/${course.slug}`}

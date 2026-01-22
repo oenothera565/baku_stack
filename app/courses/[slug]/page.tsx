@@ -3,13 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function CourseDetailPage({ params }: PageProps) {
-  const course = COURSES.find((c) => c.slug === params.slug);
+export default async function CourseDetailPage({ params }: PageProps) {
+  const { slug } = await params;
+  const course = COURSES.find((c) => c.slug === slug);
 
   if (!course) {
     return notFound();
@@ -47,7 +48,7 @@ export default function CourseDetailPage({ params }: PageProps) {
           {/* Left Column: Description */}
           <div className="border-l-2 border-black dark:border-white pl-8">
             <h2 className="text-3xl font-bold uppercase mb-6 font-mono">
-              // Syllabus
+              {"// Syllabus"}
             </h2>
             <p className="text-xl leading-relaxed mb-6">
               {course.description}
