@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar() {
   return (
@@ -10,7 +11,7 @@ export function Navbar() {
         </Link>
 
         {/* Navigation Links */}
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-6">
           <Link
             href="/courses"
             className="font-mono text-sm font-medium hover:underline"
@@ -29,6 +30,7 @@ export function Navbar() {
           >
             /dashboard
           </Link>
+          <ThemeToggle />
         </div>
       </div>
     </nav>
