@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
+import { TerminalToggle } from "./TerminalToggle";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function Navbar() {
@@ -44,6 +45,7 @@ export function Navbar() {
           </Link>
 
           <LanguageToggle />
+          <TerminalToggle />
           <ThemeToggle />
         </div>
       </div>

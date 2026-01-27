@@ -3,6 +3,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navbar } from "@/components/Navbar";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { TerminalProvider } from "@/context/TerminalContext";
+import { TerminalChat } from "@/components/TerminalChat";
 
 export const metadata: Metadata = {
   title: "Baku Stack",
@@ -18,10 +20,13 @@ export default function RootLayout({
     <html lang="en" className="light">
       <body className="antialiased">
         <LanguageProvider>
-          <ThemeProvider>
-            <Navbar />
-            {children}
-          </ThemeProvider>
+          <TerminalProvider>
+            <ThemeProvider>
+              <Navbar />
+              {children}
+              <TerminalChat />
+            </ThemeProvider>
+          </TerminalProvider>
         </LanguageProvider>
       </body>
     </html>
