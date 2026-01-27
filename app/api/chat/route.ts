@@ -4,7 +4,8 @@ import Anthropic from "@anthropic-ai/sdk";
 const SYSTEM_PROMPT = "You are a Baku Stack mentor. Expert coder. Concise answers.";
 
 export async function POST(request: NextRequest) {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  // Пробуем сначала обычную, затем NEXT_PUBLIC (для Vercel)
+  const apiKey = process.env.ANTHROPIC_API_KEY || process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY;
 
   // Debug: лог без раскрытия ключа
   console.log("API Key exists:", !!apiKey);
