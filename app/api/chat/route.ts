@@ -6,8 +6,16 @@ const SYSTEM_PROMPT = "You are a Baku Stack mentor. Expert coder. Concise answer
 export async function POST(request: NextRequest) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
 
+  // Debug: лог без раскрытия ключа
+  console.log("API Key exists:", !!apiKey);
+  console.log("API Key length:", apiKey?.length || 0);
+  console.log("API Key prefix:", apiKey?.substring(0, 7) || "none");
+
   if (!apiKey) {
-    return NextResponse.json({ error: "No API Key" }, { status: 500 });
+    return NextResponse.json(
+      { error: "No API Key configured in Vercel Environment Variables" },
+      { status: 500 }
+    );
   }
 
   try {
@@ -30,10 +38,20 @@ export async function POST(request: NextRequest) {
     const text = content.type === "text" ? content.text : "";
 
     return NextResponse.json({ content: text });
-  } catch (error) {
-    console.error("Anthropic API error:", error);
+  } catch (error: any) {
+    console.error("Anthropic API error:", error?.message || error);
+
+    // Более детальная ошибка для отладки
+    let errorMessage = "Failed to get response";
+    if (error?.message) {
+      errorMessage = error.message;
+    }
+    if (error?.type) {
+      errorMessage = `${error.type}: ${errorMessage}`;
+    }
+
     return NextResponse.json(
-      { error: "Failed to get response" },
+      { error: errorMessage, debug: error?.type },
       { status: 500 }
     );
   }
