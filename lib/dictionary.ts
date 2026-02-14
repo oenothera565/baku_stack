@@ -34,6 +34,7 @@ export interface Translations {
     title: string;
     subtitle: string;
     duration: string;
+    price: string;
     initialize: string;
     back: string;
     endOfList: string;
@@ -142,6 +143,7 @@ export const translations: Record<Language, Translations> = {
       title: "Select Path",
       subtitle: "Choose your environment variable.",
       duration: "Duration",
+      price: "Price",
       initialize: "Initialize →",
       back: "← cd ..",
       endOfList: "END OF LIST",
@@ -248,6 +250,7 @@ export const translations: Record<Language, Translations> = {
       title: "Yolu Seç",
       subtitle: "Mühit dəyişənini seç.",
       duration: "Müddət",
+      price: "Qiymət",
       initialize: "Başla →",
       back: "← cd ..",
       endOfList: "SİYAHIN SONU",

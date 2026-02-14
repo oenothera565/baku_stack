@@ -86,7 +86,7 @@ export default function CoursesPage() {
                   <div className="mt-auto pt-8 border-t border-current flex justify-between items-end">
                     <div>
                       <span className="block text-xs font-bold uppercase opacity-50">{t.courses.price}</span>
-                      <span className="font-mono font-bold">${course.price.toFixed(2)}</span>
+                      <span className="font-mono font-bold">${course.price ? course.price.toFixed(2) : "0.00"}</span>
                     </div>
                     <div className="font-bold uppercase text-sm font-mono group-hover:translate-x-2 transition-transform">
                       {t.courses.initialize}

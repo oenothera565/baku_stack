@@ -141,7 +141,7 @@ export default function CourseDetailPage({ params }: PageProps) {
             {course.difficulty}
           </span>
           <span className="px-4 py-2 border border-black dark:border-white">
-            ${course.price.toFixed(2)}
+            ${course.price ? course.price.toFixed(2) : "0.00"}
           </span>
         </div>
       </section>
@@ -242,7 +242,7 @@ export default function CourseDetailPage({ params }: PageProps) {
                       Course Price
                     </div>
                     <div className="text-3xl font-bold">
-                      ${course.price.toFixed(2)}
+                      ${course.price ? course.price.toFixed(2) : "0.00"}
                     </div>
                   </div>
 
