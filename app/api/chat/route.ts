@@ -4,17 +4,11 @@ import Anthropic from "@anthropic-ai/sdk";
 const SYSTEM_PROMPT = "You are a Baku Stack mentor. Expert coder. Concise answers.";
 
 export async function POST(request: NextRequest) {
-  // Пробуем сначала обычную, затем NEXT_PUBLIC (для Vercel)
-  const apiKey = process.env.ANTHROPIC_API_KEY || process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY;
-
-  // Debug: лог без раскрытия ключа
-  console.log("API Key exists:", !!apiKey);
-  console.log("API Key length:", apiKey?.length || 0);
-  console.log("API Key prefix:", apiKey?.substring(0, 7) || "none");
+  const apiKey = process.env.ANTHROPIC_API_KEY;
 
   if (!apiKey) {
     return NextResponse.json(
-      { error: "No API Key configured in Vercel Environment Variables" },
+      { error: "API Key not configured" },
       { status: 500 }
     );
   }
@@ -39,20 +33,16 @@ export async function POST(request: NextRequest) {
     const text = content.type === "text" ? content.text : "";
 
     return NextResponse.json({ content: text });
-  } catch (error: any) {
-    console.error("Anthropic API error:", error?.message || error);
+  } catch (error: unknown) {
+    // Proper error handling without logging sensitive info
+    let errorMessage = "Failed to get response from AI";
 
-    // Более детальная ошибка для отладки
-    let errorMessage = "Failed to get response";
-    if (error?.message) {
-      errorMessage = error.message;
-    }
-    if (error?.type) {
-      errorMessage = `${error.type}: ${errorMessage}`;
+    if (error && typeof error === 'object' && 'message' in error) {
+      errorMessage = String(error.message);
     }
 
     return NextResponse.json(
-      { error: errorMessage, debug: error?.type },
+      { error: errorMessage },
       { status: 500 }
     );
   }

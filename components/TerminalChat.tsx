@@ -57,7 +57,7 @@ export function TerminalChat() {
           { role: "assistant", content: data.content },
         ]);
       }
-    } catch (error) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: "Error: Failed to connect" },

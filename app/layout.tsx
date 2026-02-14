@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { TerminalProvider } from "@/context/TerminalContext";
 import { TerminalChat } from "@/components/TerminalChat";
+import { ToastProvider } from "@/components/ToastProvider";
 
 export const metadata: Metadata = {
   title: "Baku Stack",
@@ -25,6 +26,7 @@ export default function RootLayout({
               <Navbar />
               {children}
               <TerminalChat />
+              <ToastProvider />
             </ThemeProvider>
           </TerminalProvider>
         </LanguageProvider>
